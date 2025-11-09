@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Поиск квартиры по номеру</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Поиск квартиры по номеру</h1>
+
+        <div class="controls">
+            <label for="buildingSelect">Выберите дом:</label>
+            <select id="buildingSelect">
+            </select>
+
+            <label for="apartmentNumberInput">Введите номер квартиры:</label>
+            <input type="number" id="apartmentNumberInput" min="1" placeholder="Например, 42">
+
+            <button id="findApartmentButton">Найти</button>
+        </div>
+
+        <div id="results" class="results-box">
+        </div>
+
+        <div id="arrowContainer" class="arrow-container">
+            <svg id="leftArrow" class="arrow-svg" viewBox="0 0 100 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M90 10H10" stroke-width="4" stroke-linecap="round" />
+                <path d="M20 3L10 10L20 17" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            <svg id="rightArrow" class="arrow-svg" viewBox="0 0 100 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10 10H90" stroke-width="4" stroke-linecap="round" />
+                <path d="M80 3L90 10L80 17" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>
