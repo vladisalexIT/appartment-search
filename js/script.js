@@ -1,29 +1,34 @@
 document.addEventListener('DOMContentLoaded', () => {
     const buildings = [
-        { address: "пр-кт Дериглазова 55", entrances: 3, floors: 16, apartmentsPerFloor: 4, startFloor: 1 },
+        { address: "пр-кт Дериглазова 55", entrances: 3, floors: 17, apartmentsPerFloor: 4, startFloor: 1 },
         { address: "пр-кт Дериглазова 57", entrances: 3, floors: 17, apartmentsPerFloor: 6, startFloor: 1 },
         { address: "пр-кт Дериглазова 61", entrances: 2, floors: 17, apartmentsPerFloor: 4, startFloor: 1 },
         { address: "пр-кт Дериглазова 63", entrances: 2, floors: 16, apartmentsPerFloor: 7, startFloor: 2 },
         { address: "пр-кт Дериглазова 65", entrances: 3, floors: 17, apartmentsPerFloor: 6, startFloor: 1 },
         { address: "пр-кт Дериглазова 69", entrances: 3, floors: 17, apartmentsPerFloor: 6, startFloor: 1 },
-        { address: "пр-кт Дериглазова 71", entrances: 2, floors: 17, apartmentsPerFloor: 4, startFloor: 1 },
-        { address: "пр-кт Дериглазова 73", entrances: 3, floors: 16, apartmentsPerFloor: 5, startFloor: 2 },
+        { address: "пр-кт Дериглазова 71", entrances: 3, floors: 17, apartmentsPerFloor: 4, startFloor: 1 },
+        // { address: "пр-кт Дериглазова 73", entrances: 3, floors: 16, apartmentsPerFloor: 5, startFloor: 2 },
         { address: "пр-кт Дериглазова 75", entrances: 4, floors: 17, apartmentsPerFloor: 6, startFloor: 1 },
+        { address: "пр-кт Дериглазова 77", entrances: 2, floors: 17, apartmentsPerFloor: 4, startFloor: 1 },
         { address: "пр-кт Дериглазова 79", entrances: 2, floors: 17, apartmentsPerFloor: 6, startFloor: 1 },
         { address: "пр-кт Дериглазова 81", entrances: 2, floors: 17, apartmentsPerFloor: 6, startFloor: 1 },
-        { address: "пр-кт Дериглазова 83", entrances: 4, floors: 17, apartmentsPerFloor: 4, startFloor: 2 },
+        // { address: "пр-кт Дериглазова 83", entrances: 4, floors: 17, apartmentsPerFloor: 4, startFloor: 2 },
         { address: "пр-кт Дериглазова 85", entrances: 3, floors: 17, apartmentsPerFloor: 6, startFloor: 1 },
         { address: "пр-кт Дериглазова 87", entrances: 2, floors: 17, apartmentsPerFloor: 4, startFloor: 1 },
-        { address: "пр-кт Дериглазова 89", entrances: 4, floors: 17, apartmentsPerFloor: 4, startFloor: 2 },
+        // { address: "пр-кт Дериглазова 89", entrances: 4, floors: 17, apartmentsPerFloor: 4, startFloor: 2 },
         { address: "пр-кт Дериглазова 91", entrances: 3, floors: 17, apartmentsPerFloor: 6, startFloor: 1 },
         { address: "пр-кт Дериглазова 93", entrances: 4, floors: 17, apartmentsPerFloor: 6, startFloor: 1 },
         { address: "пр-кт Дериглазова 95", entrances: 2, floors: 17, apartmentsPerFloor: 6, startFloor: 2 },
         { address: "пр-кт Дериглазова 97", entrances: 2, floors: 17, apartmentsPerFloor: 6, startFloor: 1 },
+        { address: "пр-кт Дериглазова 107", entrances: 2, floors: 16, apartmentsPerFloor: 7, startFloor: 2 },
         { address: "пр-кт Дериглазова 50", entrances: 3, floors: 17, apartmentsPerFloor: 6, startFloor: 2 },
         { address: "пр-кт Дериглазова 52", entrances: 3, floors: 17, apartmentsPerFloor: 6, startFloor: 2 },
         { address: "пр-кт Дериглазова 54", entrances: 3, floors: 17, apartmentsPerFloor: 6, startFloor: 2 },
         { address: "пр-кт Дериглазова 56", entrances: 3, floors: 17, apartmentsPerFloor: 6, startFloor: 2 },
-        { address: "пр-кт Дериглазова 107", entrances: 2, floors: 16, apartmentsPerFloor: 7, startFloor: 2 },
+        { address: "ул. Вадима Кирпиченко 2А", entrances: 2, floors: 17, apartmentsPerFloor: 6, startFloor: 1 },
+        { address: "ул. Вадима Кирпиченко 2", entrances: 2, floors: 17, apartmentsPerFloor: 6, startFloor: 1 },
+        { address: "ул. Вадима Кирпиченко 4А", entrances: 2, floors: 17, apartmentsPerFloor: 6, startFloor: 1 },
+        { address: "ул. Вадима Кирпиченко 4", entrances: 2, floors: 17, apartmentsPerFloor: 6, startFloor: 1 },
     ];
 
     const buildingSelect = document.getElementById('buildingSelect');
@@ -86,7 +91,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const { entrances, floors, apartmentsPerFloor, startFloor } = selectedBuilding;
 
         const maxRealFloor = startFloor + floors - 1;
-        const maxAllowedFloor = Math.min(17, maxRealFloor);
+        const SPECIAL_ADDRESSES = ["пр-кт Дериглазова 63", "пр-кт Дериглазова 107"];
+        const maxAllowedFloor = SPECIAL_ADDRESSES.includes(selectedBuilding.address)
+            ? Math.min(16, maxRealFloor)
+            : Math.min(17, maxRealFloor);
         const realFloorBlocks = maxAllowedFloor - startFloor + 1;
         const apartmentsPerEntrance = realFloorBlocks * apartmentsPerFloor;
         const maxApartmentNumber = entrances * apartmentsPerEntrance;
@@ -100,7 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const apartmentNumberInEntrance = apartmentNumber - ((entranceNumber - 1) * apartmentsPerEntrance);
         const floorOffset = Math.ceil(apartmentNumberInEntrance / apartmentsPerFloor);
         const actualFloor = startFloor + (floorOffset - 1);
-        
+
         let apartmentIndexOnFloor = apartmentNumberInEntrance % apartmentsPerFloor;
         if (apartmentIndexOnFloor === 0) {
             apartmentIndexOnFloor = apartmentsPerFloor;

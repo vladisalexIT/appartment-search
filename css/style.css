@@ -19,6 +19,7 @@ body {
     width: 100%;
     max-width: 500px;
     text-align: center;
+    position: relative;
 }
 
 h1 {
@@ -74,9 +75,9 @@ input[type="number"] {
     -moz-appearance: textfield;
 }
 
-select option {
+/* select option {
     font-size: 12px;
-}
+} */
 
 button {
     background-color: #28a745;
@@ -147,6 +148,18 @@ button:hover {
     stroke: #007bff;
 }
 
+.footer-production {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    padding: 15px 0;
+    color: #555;
+    font-size: 12px;
+    opacity: 0.4;
+}
+
 @media (max-width: 500px) {
     body {
         padding: 14px;
@@ -155,5 +168,9 @@ button:hover {
     .container {
         padding: 10px;
         padding-bottom: 20px;
+    }
+
+    select option {
+        font-size: 12px;
     }
 }
